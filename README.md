@@ -1,0 +1,1 @@
+Este projeto é uma API REST desenvolvida em Java com Spring Boot, que simula o funcionamento de uma biblioteca. O sistema permite o cadastro e a gestão de livros, clientes e empréstimos, aplicando regras de negócio como controle de devolução e cálculo de atrasos.
