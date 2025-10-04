@@ -47,5 +47,19 @@ public class BookService {
             bookRepository.delete(book);
     }
 
+    public void updateData(@RequestBody Book entity, BookRequest obj){
+        entity.setTitle(obj.getTitle());
+        entity.setPages(obj.getPages());
+        entity.setAuthor(authorRepository.getReferenceById(obj.getAuthorId()));
+    }
 
+    public Book update(Long id, BookRequest obj){
+        try {
+            Book entity = bookRepository.getReferenceById(id);
+            updateData(entity, obj);
+            return bookRepository.save(entity);
+        } catch (RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
 }
