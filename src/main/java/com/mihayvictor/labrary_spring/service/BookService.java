@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -24,6 +25,12 @@ public class BookService {
     public List<Book> findAll(){
         return bookRepository.findAll();
     }
+
+    public Book findById(Long id){
+        Optional<Book> obj = bookRepository.findById(id);
+        return obj.get();
+    }
+
     public Book insert(@RequestBody BookRequest request){
         Author author = authorRepository.findById(request.getAuthorId())
                 .orElseThrow(() -> new RuntimeException("Author não encontrado"));
@@ -33,4 +40,12 @@ public class BookService {
         book.setAuthor(author);
         return bookRepository.save(book);
     }
+
+    public void delete(Long id){
+            Book book = bookRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Livro com ID " + id + " Não encontrado."));
+            bookRepository.delete(book);
+    }
+
+
 }

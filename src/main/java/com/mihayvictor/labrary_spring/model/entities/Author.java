@@ -52,4 +52,6 @@ public class Author implements Serializable {
     public int hashCode() {
         return Objects.hash(id, name);
     }
+
+
 }

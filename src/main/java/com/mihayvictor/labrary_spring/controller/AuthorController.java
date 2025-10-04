@@ -24,11 +24,23 @@ public class AuthorController {
         return ResponseEntity.ok().body(list);
     }
 
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Author> findById(@PathVariable Long id) {
+        Author author = service.findById(id);
+        return ResponseEntity.ok(author);
+    }
+
     @PostMapping
     public ResponseEntity<Author>Insert(@RequestBody Author author){
         author = service.insert(author);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{authors}").
                 buildAndExpand(author.getId()).toUri();
         return ResponseEntity.created(uri).body(author);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void>delete(@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

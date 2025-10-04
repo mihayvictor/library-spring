@@ -1,12 +1,16 @@
 package com.mihayvictor.labrary_spring.model.entities;
 
+
 import jakarta.persistence.*;
 
+
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "books")
-public class Book{
+public class Book {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,4 +75,6 @@ public class Book{
     public int hashCode() {
         return Objects.hash(id, title, pages, author);
     }
+
+
 }

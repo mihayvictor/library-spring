@@ -1,6 +1,7 @@
 package com.mihayvictor.labrary_spring.model.entities.dto;
 
 import com.mihayvictor.labrary_spring.model.entities.Author;
+import com.mihayvictor.labrary_spring.model.entities.Book;
 
 public class BookRequest {
     private String title;
@@ -39,4 +40,5 @@ public class BookRequest {
     public void setAuthorId(Long authorId) {
         this.authorId = authorId;
     }
+
 }

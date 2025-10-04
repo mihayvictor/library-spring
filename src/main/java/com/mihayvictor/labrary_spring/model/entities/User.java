@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table
-public class Customer {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,10 +15,10 @@ public class Customer {
     private String name;
     private BookDTO book;
 
-    public Customer() {
+    public User() {
     }
 
-    public Customer(BookDTO book, String name, Long id) {
+    public User(BookDTO book, String name, Long id) {
         this.book = book;
         this.name = name;
         this.id = id;
@@ -51,7 +51,7 @@ public class Customer {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
+        User customer = (User) o;
         return Objects.equals(id, customer.id);
     }
 
