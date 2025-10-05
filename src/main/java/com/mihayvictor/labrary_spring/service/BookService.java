@@ -2,8 +2,7 @@ package com.mihayvictor.labrary_spring.service;
 
 import com.mihayvictor.labrary_spring.model.entities.Author;
 import com.mihayvictor.labrary_spring.model.entities.Book;
-import com.mihayvictor.labrary_spring.model.entities.dto.BookDTO;
-import com.mihayvictor.labrary_spring.model.entities.dto.BookRequest;
+import com.mihayvictor.labrary_spring.model.dto.request.BookRequest;
 import com.mihayvictor.labrary_spring.repository.AuthorRepository;
 import com.mihayvictor.labrary_spring.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,15 +46,18 @@ public class BookService {
             bookRepository.delete(book);
     }
 
-    public void updateData(@RequestBody Book entity, BookRequest obj){
+    public void updateData(Book entity, BookRequest obj){
         entity.setTitle(obj.getTitle());
         entity.setPages(obj.getPages());
-        entity.setAuthor(authorRepository.getReferenceById(obj.getAuthorId()));
+        Author author = authorRepository.findById(obj.getAuthorId())
+                        .orElseThrow(() -> new RuntimeException("Autor com ID " + obj.getAuthorId() + " Não encontrado."));
+        entity.setAuthor(author);
     }
 
     public Book update(Long id, BookRequest obj){
         try {
-            Book entity = bookRepository.getReferenceById(id);
+            Book entity = bookRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Livro com ID " + id + " Não encontrado."));
             updateData(entity, obj);
             return bookRepository.save(entity);
         } catch (RuntimeException e) {

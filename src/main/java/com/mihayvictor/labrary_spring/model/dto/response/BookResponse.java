@@ -1,15 +1,12 @@
-package com.mihayvictor.labrary_spring.model.entities.dto;
+package com.mihayvictor.labrary_spring.model.dto.response;
 
 import com.mihayvictor.labrary_spring.model.entities.Author;
 import com.mihayvictor.labrary_spring.model.entities.Book;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 import java.io.Serial;
 import java.io.Serializable;
 
-public class BookDTO implements Serializable {
+public class BookResponse implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
@@ -17,10 +14,10 @@ public class BookDTO implements Serializable {
     private int pages;
     private Author author;
 
-    public BookDTO() {
+    public BookResponse() {
     }
 
-    public BookDTO(Book book){
+    public BookResponse(Book book){
         this.title = book.getTitle();
         this.pages = book.getPages();
         this.author = book.getAuthor() != null ? book.getAuthor() : null;

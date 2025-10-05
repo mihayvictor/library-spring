@@ -1,7 +1,4 @@
-package com.mihayvictor.labrary_spring.model.entities.dto;
-
-import com.mihayvictor.labrary_spring.model.entities.Author;
-import com.mihayvictor.labrary_spring.model.entities.Book;
+package com.mihayvictor.labrary_spring.model.dto.request;
 
 public class BookRequest {
     private String title;

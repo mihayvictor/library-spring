@@ -1,6 +1,6 @@
 package com.mihayvictor.labrary_spring.model.entities;
 
-import com.mihayvictor.labrary_spring.model.entities.dto.BookDTO;
+import com.mihayvictor.labrary_spring.model.dto.response.BookResponse;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -13,12 +13,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private BookDTO book;
+    private BookResponse book;
 
     public User() {
     }
 
-    public User(BookDTO book, String name, Long id) {
+    public User(BookResponse book, String name, Long id) {
         this.book = book;
         this.name = name;
         this.id = id;
@@ -40,11 +40,11 @@ public class User {
         this.name = name;
     }
 
-    public BookDTO getBook() {
+    public BookResponse getBook() {
         return book;
     }
 
-    public void setBook(BookDTO book) {
+    public void setBook(BookResponse book) {
         this.book = book;
     }
 

@@ -1,14 +1,13 @@
 package com.mihayvictor.labrary_spring.controller;
 
 import com.mihayvictor.labrary_spring.model.entities.Book;
-import com.mihayvictor.labrary_spring.model.entities.dto.BookDTO;
-import com.mihayvictor.labrary_spring.model.entities.dto.BookRequest;
+import com.mihayvictor.labrary_spring.model.dto.response.BookResponse;
+import com.mihayvictor.labrary_spring.model.dto.request.BookRequest;
 import com.mihayvictor.labrary_spring.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -31,13 +30,13 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<BookDTO>Insert(@RequestBody BookRequest bookRequest) {
+    public ResponseEntity<BookResponse>Insert(@RequestBody BookRequest bookRequest) {
 
         Book createdBook = bookService.insert(bookRequest);
 
-        BookDTO bookDTO = new BookDTO(createdBook);
+        BookResponse bookResponse = new BookResponse(createdBook);
 
-        return ResponseEntity.status(201).body(bookDTO);
+        return ResponseEntity.status(201).body(bookResponse);
 
     }
 
@@ -48,8 +47,8 @@ public class BookController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<BookDTO> update(@PathVariable Long id, @RequestBody BookRequest bookRequest){
-        BookDTO bookDTO= new BookDTO(bookService.update(id, bookRequest));
-        return ResponseEntity.ok(bookDTO);
+    public ResponseEntity<BookResponse> update(@PathVariable Long id, @RequestBody BookRequest bookRequest){
+        BookResponse bookResponse = new BookResponse(bookService.update(id, bookRequest));
+        return ResponseEntity.ok(bookResponse);
     }
 }
