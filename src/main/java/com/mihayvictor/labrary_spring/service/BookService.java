@@ -5,6 +5,7 @@ import com.mihayvictor.labrary_spring.model.entities.Book;
 import com.mihayvictor.labrary_spring.model.dto.request.BookRequest;
 import com.mihayvictor.labrary_spring.repository.AuthorRepository;
 import com.mihayvictor.labrary_spring.repository.BookRepository;
+import com.mihayvictor.labrary_spring.service.exception.ObjectNotFoundExeception;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,13 +27,14 @@ public class BookService {
     }
 
     public Book findById(Long id){
-        Optional<Book> obj = bookRepository.findById(id);
+        Optional<Book> obj = Optional.ofNullable(bookRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundExeception("Livro com o ID " + id + " Não encontrado.")));
         return obj.get();
     }
 
     public Book insert(@RequestBody BookRequest request){
         Author author = authorRepository.findById(request.getAuthorId())
-                .orElseThrow(() -> new RuntimeException("Author não encontrado"));
+                .orElseThrow(() -> new ObjectNotFoundExeception("Author com o ID " + request.getAuthorId() + " não encontrado"));
         Book book = new Book();
         book.setTitle(request.getTitle());
         book.setPages(request.getPages());
@@ -42,7 +44,7 @@ public class BookService {
 
     public void delete(Long id){
             Book book = bookRepository.findById(id)
-                    .orElseThrow(() -> new RuntimeException("Livro com ID " + id + " Não encontrado."));
+                    .orElseThrow(() -> new ObjectNotFoundExeception("Livro com o ID " + id + " Não encontrado."));
             bookRepository.delete(book);
     }
 
@@ -50,18 +52,14 @@ public class BookService {
         entity.setTitle(obj.getTitle());
         entity.setPages(obj.getPages());
         Author author = authorRepository.findById(obj.getAuthorId())
-                        .orElseThrow(() -> new RuntimeException("Autor com ID " + obj.getAuthorId() + " Não encontrado."));
+                        .orElseThrow(() -> new ObjectNotFoundExeception("Autor com o ID " + obj.getAuthorId() + " Não encontrado."));
         entity.setAuthor(author);
     }
 
     public Book update(Long id, BookRequest obj){
-        try {
             Book entity = bookRepository.findById(id)
-                    .orElseThrow(() -> new RuntimeException("Livro com ID " + id + " Não encontrado."));
+                    .orElseThrow(() -> new ObjectNotFoundExeception("Livro com o ID " + id + " Não encontrado."));
             updateData(entity, obj);
             return bookRepository.save(entity);
-        } catch (RuntimeException e) {
-            throw new RuntimeException(e.getMessage());
-        }
     }
 }
