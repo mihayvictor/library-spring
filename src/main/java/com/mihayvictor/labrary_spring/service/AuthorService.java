@@ -38,4 +38,11 @@ public class AuthorService {
             throw new DataIntegrityViolationException(e.getMessage());
         }
     }
+
+    public Author update(Long id, Author author){
+        Optional<Author> obj = repository.findById(id);
+        Author authorObj = obj.get();
+        authorObj.setName(author.getName());
+        return repository.save(authorObj);
+    }
 }
