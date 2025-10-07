@@ -1,6 +1,6 @@
-package com.mihayvictor.labrary_spring.controller.exception;
+package com.mihayvictor.library_spring.controller.exception;
 
-import com.mihayvictor.labrary_spring.service.exception.ObjectNotFoundException;
+import com.mihayvictor.library_spring.service.exception.ObjectNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

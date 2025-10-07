@@ -1,4 +1,4 @@
-package com.mihayvictor.labrary_spring.controller.exception;
+package com.mihayvictor.library_spring.controller.exception;
 
 import java.io.Serial;
 import java.io.Serializable;

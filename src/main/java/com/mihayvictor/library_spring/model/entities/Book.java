@@ -1,10 +1,9 @@
-package com.mihayvictor.labrary_spring.model.entities;
+package com.mihayvictor.library_spring.model.entities;
 
 
 import jakarta.persistence.*;
 
 
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity

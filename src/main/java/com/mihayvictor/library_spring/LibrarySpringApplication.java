@@ -1,4 +1,4 @@
-package com.mihayvictor.labrary_spring;
+package com.mihayvictor.library_spring;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

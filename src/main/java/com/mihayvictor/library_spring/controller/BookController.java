@@ -1,9 +1,9 @@
-package com.mihayvictor.labrary_spring.controller;
+package com.mihayvictor.library_spring.controller;
 
-import com.mihayvictor.labrary_spring.model.entities.Book;
-import com.mihayvictor.labrary_spring.model.dto.response.BookResponse;
-import com.mihayvictor.labrary_spring.model.dto.request.BookRequest;
-import com.mihayvictor.labrary_spring.service.BookService;
+import com.mihayvictor.library_spring.model.entities.Book;
+import com.mihayvictor.library_spring.model.dto.response.BookResponse;
+import com.mihayvictor.library_spring.model.dto.request.BookRequest;
+import com.mihayvictor.library_spring.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

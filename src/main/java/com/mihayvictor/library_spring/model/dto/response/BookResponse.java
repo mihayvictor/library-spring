@@ -1,7 +1,7 @@
-package com.mihayvictor.labrary_spring.model.dto.response;
+package com.mihayvictor.library_spring.model.dto.response;
 
-import com.mihayvictor.labrary_spring.model.entities.Author;
-import com.mihayvictor.labrary_spring.model.entities.Book;
+import com.mihayvictor.library_spring.model.entities.Author;
+import com.mihayvictor.library_spring.model.entities.Book;
 
 import java.io.Serial;
 import java.io.Serializable;

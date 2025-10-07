@@ -1,4 +1,4 @@
-package com.mihayvictor.labrary_spring.model.dto.request;
+package com.mihayvictor.library_spring.model.dto.request;
 
 public class BookRequest {
     private String title;

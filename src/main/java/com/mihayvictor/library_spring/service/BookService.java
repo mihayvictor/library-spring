@@ -1,11 +1,11 @@
-package com.mihayvictor.labrary_spring.service;
+package com.mihayvictor.library_spring.service;
 
-import com.mihayvictor.labrary_spring.model.entities.Author;
-import com.mihayvictor.labrary_spring.model.entities.Book;
-import com.mihayvictor.labrary_spring.model.dto.request.BookRequest;
-import com.mihayvictor.labrary_spring.repository.AuthorRepository;
-import com.mihayvictor.labrary_spring.repository.BookRepository;
-import com.mihayvictor.labrary_spring.service.exception.ObjectNotFoundException;
+import com.mihayvictor.library_spring.model.entities.Author;
+import com.mihayvictor.library_spring.model.entities.Book;
+import com.mihayvictor.library_spring.model.dto.request.BookRequest;
+import com.mihayvictor.library_spring.repository.AuthorRepository;
+import com.mihayvictor.library_spring.repository.BookRepository;
+import com.mihayvictor.library_spring.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;

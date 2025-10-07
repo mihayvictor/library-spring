@@ -1,8 +1,8 @@
-package com.mihayvictor.labrary_spring.service;
+package com.mihayvictor.library_spring.service;
 
-import com.mihayvictor.labrary_spring.model.entities.Author;
-import com.mihayvictor.labrary_spring.repository.AuthorRepository;
-import com.mihayvictor.labrary_spring.service.exception.ObjectNotFoundException;
+import com.mihayvictor.library_spring.model.entities.Author;
+import com.mihayvictor.library_spring.repository.AuthorRepository;
+import com.mihayvictor.library_spring.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;

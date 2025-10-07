@@ -1,4 +1,4 @@
-package com.mihayvictor.labrary_spring.service.exception;
+package com.mihayvictor.library_spring.service.exception;
 
 public class ObjectNotFoundException extends RuntimeException {
 

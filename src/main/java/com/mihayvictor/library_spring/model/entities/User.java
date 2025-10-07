@@ -1,6 +1,6 @@
-package com.mihayvictor.labrary_spring.model.entities;
+package com.mihayvictor.library_spring.model.entities;
 
-import com.mihayvictor.labrary_spring.model.dto.response.BookResponse;
+import com.mihayvictor.library_spring.model.dto.response.BookResponse;
 import jakarta.persistence.*;
 
 import java.util.Objects;
