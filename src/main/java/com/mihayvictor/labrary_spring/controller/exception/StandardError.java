@@ -3,25 +3,25 @@ package com.mihayvictor.labrary_spring.controller.exception;
 import java.io.Serial;
 import java.io.Serializable;
 
-public class StandarError implements Serializable {
+public class StandardError implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
     private Long timestamp;
     private Integer status;
     private String error;
-    private String messege;
+    private String message;
     private String path;
 
-    public StandarError(){
+    public StandardError(){
         super();
     }
 
-    public StandarError(Long timestamp, Integer status, String error, String messege, String path) {
+    public StandardError(Long timestamp, Integer status, String error, String message, String path) {
         this.timestamp = timestamp;
         this.status = status;
         this.error = error;
-        this.messege = messege;
+        this.message = message;
         this.path = path;
     }
 
@@ -49,12 +49,12 @@ public class StandarError implements Serializable {
         this.error = error;
     }
 
-    public String getMessege() {
-        return messege;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMessege(String messege) {
-        this.messege = messege;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getPath() {

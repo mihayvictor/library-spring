@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mihayvictor</groupId>
-	<artifactId>labrary-spring</artifactId>
+	<artifactId>library-spring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>labrary-spring</name>
 	<description>Este projeto é uma API REST desenvolvida em Java com Spring Boot, que simula o funcionamento de uma biblioteca. O sistema permite o cadastro e a gestão de livros, usuários e empréstimos, aplicando regras de negócio como controle de devolução e cálculo de atrasos.</description>

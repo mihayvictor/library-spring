@@ -1,6 +1,6 @@
 package com.mihayvictor.labrary_spring.controller.exception;
 
-import com.mihayvictor.labrary_spring.service.exception.ObjectNotFoundExeception;
+import com.mihayvictor.labrary_spring.service.exception.ObjectNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
-    @ExceptionHandler(ObjectNotFoundExeception.class)
-    public ResponseEntity<StandarError>objectNotFound(ObjectNotFoundExeception e, HttpServletRequest request){
+    @ExceptionHandler(ObjectNotFoundException.class)
+    public ResponseEntity<StandardError>objectNotFound(ObjectNotFoundException e, HttpServletRequest request){
         HttpStatus status = HttpStatus.NOT_FOUND;
-        StandarError err =
-                new StandarError
+        StandardError err =
+                new StandardError
                         (System.currentTimeMillis(), status.value(), "Não encontrado", e.getMessage(), request.getRequestURI());
         return ResponseEntity.status(status).body(err);
     }
