@@ -2,6 +2,7 @@ package com.mihayvictor.library_spring.service;
 
 import com.mihayvictor.library_spring.model.entities.Author;
 import com.mihayvictor.library_spring.repository.AuthorRepository;
+import com.mihayvictor.library_spring.service.exception.DatabaseException;
 import com.mihayvictor.library_spring.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -37,7 +38,7 @@ public class AuthorService {
             repository.delete(author);
         }
         catch (DataIntegrityViolationException e){
-            throw new DataIntegrityViolationException(e.getMessage());
+            throw new DatabaseException(e.getMessage());
         }
     }
 
