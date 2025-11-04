@@ -1,25 +1,32 @@
 package com.mihayvictor.library_spring.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mihayvictor.library_spring.model.dto.response.BookResponse;
 import jakarta.persistence.*;
 
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table
-public class User {
+@Table(name = "tb_user")
+public class User implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private BookResponse book;
+    @JsonIgnore
+    private List<Loan> loans;
+
 
     public User() {
     }
 
-    public User(BookResponse book, String name, Long id) {
-        this.book = book;
+    public User( String name, Long id) {
         this.name = name;
         this.id = id;
     }
@@ -40,23 +47,19 @@ public class User {
         this.name = name;
     }
 
-    public BookResponse getBook() {
-        return book;
-    }
-
-    public void setBook(BookResponse book) {
-        this.book = book;
+    public List<Loan> getLoans() {
+        return loans;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        User customer = (User) o;
-        return Objects.equals(id, customer.id);
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(id, name);
     }
 }

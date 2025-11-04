@@ -3,12 +3,8 @@ package com.mihayvictor.library_spring.model.dto.response;
 import com.mihayvictor.library_spring.model.entities.Author;
 import com.mihayvictor.library_spring.model.entities.Book;
 
-import java.io.Serial;
-import java.io.Serializable;
+public class BookResponse {
 
-public class BookResponse implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
 
     private String title;
     private int pages;

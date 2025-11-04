@@ -1,15 +1,20 @@
 package com.mihayvictor.library_spring.model.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "books")
-public class Book {
-
+public class Book implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,9 +22,13 @@ public class Book {
     private String title;
     private int pages;
 
+
     @ManyToOne
     @JoinColumn(name = "author_id") // cria a coluna de referência no livro
     private Author author;
+
+    @JsonIgnore
+    private List<Loan> loans;
 
     public Book() {
     }
@@ -61,6 +70,10 @@ public class Book {
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    public List<Loan> getLoans() {
+        return loans;
     }
 
     @Override

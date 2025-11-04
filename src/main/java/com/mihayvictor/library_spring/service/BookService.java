@@ -8,7 +8,6 @@ import com.mihayvictor.library_spring.repository.BookRepository;
 import com.mihayvictor.library_spring.service.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +31,7 @@ public class BookService {
         return obj.get();
     }
 
-    public Book insert(@RequestBody BookRequest request){
+    public Book insert( BookRequest request){
         Author author = authorRepository.findById(request.getAuthorId())
                 .orElseThrow(() -> new ObjectNotFoundException("Author com o ID " + request.getAuthorId() + " não encontrado"));
         Book book = new Book();

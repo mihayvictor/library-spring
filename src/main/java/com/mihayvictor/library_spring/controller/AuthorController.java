@@ -30,7 +30,7 @@ public class AuthorController {
     }
 
     @PostMapping
-    public ResponseEntity<Author>Insert(@RequestBody Author author){
+    public ResponseEntity<Author>insert(@RequestBody Author author){
         author = service.insert(author);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{authors}").
                 buildAndExpand(author.getId()).toUri();
