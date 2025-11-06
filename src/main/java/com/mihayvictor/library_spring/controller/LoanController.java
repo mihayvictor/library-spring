@@ -42,8 +42,13 @@ public class LoanController {
     public ResponseEntity<LoanResponse>createLoan(@RequestBody LoanRequest request, LoanResponse response){
         Loan createdLoan = libraryService.processLoan(request);
         LoanResponse loanResponse = response.toResponse(createdLoan);
-        //Falta calcular o valor de atraso com base no serviço
         return ResponseEntity.status(201).body(loanResponse);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void>delete(@PathVariable Long id){
+        loanService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

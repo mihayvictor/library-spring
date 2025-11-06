@@ -30,7 +30,6 @@ public class Loan implements Serializable {
     private int days;
     private LocalDate expectedReturnDate;
     private LocalDate realReturnDate;
-    private Integer loanDays;
     private int late;
     private double divideByDelay;
 
@@ -42,8 +41,8 @@ public class Loan implements Serializable {
         this.book = book;
         this.user = user;
         this.loanDate = loanDate;
+        this.days = days;
         expectedReturnDate = loanDate.plusDays(days);
-        loanDays = loanDays();
         late = daysLate();
     }
 
@@ -95,14 +94,6 @@ public class Loan implements Serializable {
         this.realReturnDate = realReturnDate;
     }
 
-    public Integer getLoanDays() {
-        return loanDays;
-    }
-
-    public void setDays(Integer loanDays) {
-        this.loanDays = loanDays;
-    }
-
     public int getLateDays() {
         return late;
     }
@@ -127,12 +118,16 @@ public class Loan implements Serializable {
         this.late = late;
     }
 
-    public int loanDays(){
-        Period period = Period.between(this.getLoanDate(), this.getExpectedReturnDate());
-        int yearLate = period.getYears();
-        int monthsLate = period.getMonths();
-        int daysLate = period.getDays();
-        return yearLate * 365 + monthsLate * 30 + daysLate;
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        this.days = days;
+    }
+
+    public void setDivideByDelay(double divideByDelay) {
+        this.divideByDelay = divideByDelay;
     }
 
     public int daysLate(){

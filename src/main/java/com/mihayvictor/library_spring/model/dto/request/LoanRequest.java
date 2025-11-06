@@ -9,10 +9,8 @@ public class LoanRequest {
     private LocalDate loanDate;
     private LocalDate expectedReturnDate;
     private LocalDate realReturnDate;
-    private Integer loanDays;
     private int late;
     private int days;
-
     private Long user_id;
     private Long book_id;
 
@@ -22,8 +20,6 @@ public class LoanRequest {
     public LoanRequest(LocalDate loanDate, int days, LocalDate realReturnDate, Long user_id, Long book_id) {
         this.loanDate = loanDate;
         expectedReturnDate = loanDate.plusDays(days);
-        this.loanDays = loanDays();
-        expectedReturnDate = loanDate.plusDays(getLoanDays());
         this.realReturnDate = realReturnDate;
         late = daysLate();
         this.user_id = user_id;
@@ -52,14 +48,6 @@ public class LoanRequest {
 
     public void setRealReturnDate(LocalDate realReturnDate) {
         this.realReturnDate = realReturnDate;
-    }
-
-    public Integer getLoanDays() {
-        return loanDays;
-    }
-
-    public void setLoanDays(Integer loanDays) {
-        this.loanDays = loanDays;
     }
 
     public int getLate() {

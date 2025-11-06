@@ -37,13 +37,9 @@ public class LibraryService {
     @Autowired
     private LoanPlanService defaultPlan;
 
-    public void validateLoanDate(LoanRequest request){
-        if (request.getRealReturnDate().isBefore(request.getLoanDate())){
-                throw new LoanDateException("A data de devolução não pode ser anterior a data de emprestímo.");
-        }
-    }
 
     public Loan processLoan(LoanRequest request){
+        loanService.validateLoanDate(request);
         System.out.println("📘 book_id recebido: " + request.getBook_id());
         System.out.println("👤 user_id recebido: " + request.getUser_id());
         System.out.println("📅 loanDate: " + request.getLoanDate());
@@ -57,11 +53,12 @@ public class LibraryService {
         loan.setUser(user);
         loan.setBook(book);
         loan.setLoanDate(request.getLoanDate());
-        loan.setDays(request.getLoanDays());
+        loan.setDays(request.getDays());
         loan.setExpectedReturnDate(request.getLoanDate().plusDays(request.getDays()));
         loan.setRealReturnDate(request.getRealReturnDate());
         loan.setLateDays(request.getLate());
         loan.setDivideByDelay(defaultPlan.calculate(loanService.delay(loan)));
+        loan.setLate(loanService.delay(loan));
         return loanRepository.save(loan);
     }
 }
