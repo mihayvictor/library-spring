@@ -36,7 +36,7 @@ public class ResourceExceptionHandler {
     }
 
     @ExceptionHandler(LoanDateException.class)
-    public ResponseEntity<StandardError>lonDate(LoanDateException e, HttpServletRequest request){
+    public ResponseEntity<StandardError>loanDate(LoanDateException e, HttpServletRequest request){
         HttpStatus status = HttpStatus.BAD_REQUEST;
         String error = "LoanDate error";
         StandardError err =
