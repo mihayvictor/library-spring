@@ -39,10 +39,13 @@ public class LibraryService {
 
 
     public Loan processLoan(LoanRequest request){
+
+        if(request.getDays() < 1) {
+            throw new LoanDateException
+                    ("A quantidade de dias para o emprestímo de livros não podem ser menor que 1.");
+        };
+
         loanService.validateLoanDate(request);
-        System.out.println("📘 book_id recebido: " + request.getBook_id());
-        System.out.println("👤 user_id recebido: " + request.getUser_id());
-        System.out.println("📅 loanDate: " + request.getLoanDate());
         Book book = bookRepository.findById(request.getBook_id())
                 .orElseThrow(() ->new ObjectNotFoundException("Livro de ID " + request.getBook_id() + " não encontrado."));
 

@@ -23,8 +23,8 @@ public class LoanService {
     }
 
     public Loan findById(Long id){
-        Optional<Loan> obj = Optional.ofNullable(repository.findById(id))
-                .orElseThrow(() -> new ObjectNotFoundException("ID não encontrado."));
+        Optional<Loan> obj = Optional.of(repository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Emprestímo de ID " + id + " não encontrado.")));
         return obj.get();
     }
 
