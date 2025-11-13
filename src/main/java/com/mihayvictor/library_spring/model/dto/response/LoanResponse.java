@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 public class LoanResponse {
 
+    private Long id;
     private LocalDate loanDate;
     private LocalDate expectedReturnDate;
     private LocalDate realReturnDate;
@@ -22,6 +23,7 @@ public class LoanResponse {
 
     public LoanResponse toResponse(Loan loan){
         LoanResponse response = new LoanResponse();
+        response.setId(loan.getId());
         response.setLoanDate(loan.getLoanDate());
         response.setExpectedReturnDate(loan.getExpectedReturnDate());
         response.setRealReturnDate(loan.getRealReturnDate());
@@ -30,6 +32,14 @@ public class LoanResponse {
         response.setUser(loan.getUser());
         response.setLateDays(loan.getLate());
         return response;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public LocalDate getLoanDate() {

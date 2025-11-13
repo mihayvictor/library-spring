@@ -38,7 +38,7 @@ public class AuthorService {
             repository.delete(author);
         }
         catch (DataIntegrityViolationException e){
-            throw new DatabaseException(e.getMessage());
+            throw new DatabaseException("Violação de integridade - Você não pode deletar um autor que possui livros associados a ele.");
         }
     }
 

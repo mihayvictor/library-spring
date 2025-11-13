@@ -23,6 +23,7 @@ public class Loan implements Serializable {
     private Book book;
 
     @ManyToOne(optional = false)
+    @JsonIgnore
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
@@ -138,4 +139,18 @@ public class Loan implements Serializable {
         return yearLate * 365 + monthsLate * 30 + daysLate;
     }
 
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "id=" + id +
+                ", book=" + book +
+                ", user=" + user +
+                ", loanDate=" + loanDate +
+                ", days=" + days +
+                ", expectedReturnDate=" + expectedReturnDate +
+                ", realReturnDate=" + realReturnDate +
+                ", late=" + late +
+                ", divideByDelay=" + divideByDelay +
+                '}';
+    }
 }

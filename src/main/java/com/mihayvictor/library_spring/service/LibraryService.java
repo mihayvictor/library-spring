@@ -59,9 +59,12 @@ public class LibraryService {
         loan.setDays(request.getDays());
         loan.setExpectedReturnDate(request.getLoanDate().plusDays(request.getDays()));
         loan.setRealReturnDate(request.getRealReturnDate());
+
         loan.setLateDays(request.getLate());
         loan.setDivideByDelay(defaultPlan.calculate(loanService.delay(loan)));
         loan.setLate(loanService.delay(loan));
+
+        user.addLoan(loan);
         return loanRepository.save(loan);
     }
 }

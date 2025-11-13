@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,8 +20,9 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @JsonIgnore
-    private List<Loan> loans;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Loan> loans = new ArrayList<>();
 
 
     public User() {
@@ -49,6 +51,14 @@ public class User implements Serializable {
 
     public List<Loan> getLoans() {
         return loans;
+    }
+
+    public void addLoan(Loan loan){
+        if (loans == null){
+            loans = new ArrayList<>();
+        }
+        loans.add(loan);
+        loan.setUser(this);
     }
 
     @Override

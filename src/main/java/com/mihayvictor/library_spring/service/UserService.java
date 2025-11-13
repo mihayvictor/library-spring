@@ -1,5 +1,6 @@
 package com.mihayvictor.library_spring.service;
 
+import com.mihayvictor.library_spring.model.entities.Loan;
 import com.mihayvictor.library_spring.model.entities.User;
 import com.mihayvictor.library_spring.repository.UserRepository;
 import com.mihayvictor.library_spring.service.exception.DatabaseException;
@@ -37,8 +38,9 @@ public class UserService {
                     .orElseThrow(() -> new ObjectNotFoundException("Usuário de ID " + id + " não encontrado."));
             repository.delete(user);
         } catch (DataIntegrityViolationException e) {
-            throw new DatabaseException(e.getMessage());
+            throw new DatabaseException("Violação de integridade - você não pode deletar um usuário que possui empréstimos" +
+                    "associados a ele.");
         }
     }
-    
+
 }
