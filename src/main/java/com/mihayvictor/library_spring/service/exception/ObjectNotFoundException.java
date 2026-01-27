@@ -1,9 +1,0 @@
-package com.mihayvictor.library_spring.service.exception;
-
-public class ObjectNotFoundException extends RuntimeException {
-
-    public ObjectNotFoundException(String msg){
-        super(msg);
-    }
-}
-

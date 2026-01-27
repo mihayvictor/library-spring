@@ -1,0 +1,53 @@
+package com.mihayvictor.library_spring.book;
+
+import com.mihayvictor.library_spring.book.entity.Book;
+import com.mihayvictor.library_spring.book.dto.BookResponse;
+import com.mihayvictor.library_spring.book.dto.BookRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/books")
+public class BookController {
+
+    @Autowired
+    private BookService bookService;
+
+    @GetMapping
+    public ResponseEntity<List<Book>>findAll(){
+        List<Book>list = bookService.findAll();
+        return ResponseEntity.ok().body(list);
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Book>findById(@PathVariable Long id){
+        Book book = bookService.findById(id);
+        return ResponseEntity.ok(book);
+    }
+
+    @PostMapping
+    public ResponseEntity<BookResponse>Insert(@RequestBody BookRequest bookRequest) {
+
+        Book createdBook = bookService.insert(bookRequest);
+
+        BookResponse bookResponse = new BookResponse(createdBook);
+
+        return ResponseEntity.status(201).body(bookResponse);
+
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void>delete(@PathVariable  Long id){
+        bookService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<BookResponse> update(@PathVariable Long id, @RequestBody BookRequest bookRequest){
+        BookResponse bookResponse = new BookResponse(bookService.update(id, bookRequest));
+        return ResponseEntity.ok(bookResponse);
+    }
+}
